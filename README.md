@@ -1,38 +1,23 @@
 
-# PIXNET 自動發文系統（進階排程 + 通知）
+# PIXNET 自動發文系統
 
-## 功能包含：
+✅ 功能包含：自動產文、自動關鍵字、自動抓新聞、自動發文、自動推播
 
-- FastAPI 啟動 Web API `/post_article`
-- 自動從 `自動發文主帳號.txt` 每 180 秒輪流發文
-- 成功後記錄至 `發文紀錄.txt`
-- 成功發文自動 LINE Notify 通知
+## 🛠️ 使用方式
 
-## 啟動服務：
+### 🔧 部署前準備
 
-```bash
-uvicorn main:app --host 0.0.0.0 --port 10000
-```
+1. 填入 pixnet_accounts.txt 帳密（格式：帳號:密碼）
+2. 複製 .env.example 為 .env，填入 LINE Notify 權杖
+3. 使用 render.yaml 一鍵部署
 
-打開 Swagger 測試介面：
+### 🚀 發文 API 測試
 
-```
-http://localhost:10000/docs
-```
+前往 `/docs` 介面，使用 `/post_article` 測試發文
 
-### 環境變數（.env）
-
-請設定：
-
-```
-LINE_NOTIFY_TOKEN=你的 LINE Notify 權杖
-```
-
-### 帳密檔案格式
-
-`自動發文主帳號.txt`：
-
-```
-帳號1:密碼1
-帳號2:密碼2
+```json
+{
+  "account": "帳號",
+  "password": "密碼"
+}
 ```
