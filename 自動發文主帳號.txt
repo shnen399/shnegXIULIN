@@ -1,1 +1,2 @@
-demo.pixnet@demo.com:password123
+success.account@example.com:password123
+fail.account@example.com:wrongpass

@@ -1,25 +1,13 @@
 
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-from scheduler import start_scheduler
+from fastapi import FastAPI
+from panel_article import auto_post_articles
 
 app = FastAPI()
 
-@app.on_event("startup")
-def startup_event():
-    start_scheduler()
-
 @app.get("/")
 def root():
-    return JSONResponse(content={"message": "PIXNET 自動發文系統已啟動"})
+    return {"message": "PIXNET 自動發文系統已啟動"}
 
 @app.post("/post_article")
-async def post_article(request: Request):
-    from pixnet_api import post_to_pixnet
-    from article_generator import generate_article
-    data = await request.json()
-    account = data.get("account")
-    password = data.get("password")
-    title, content = generate_article()
-    url = post_to_pixnet(account, password, title, content)
-    return {"status": "success", "title": title, "url": url}
+def manual_post():
+    return auto_post_articles()
