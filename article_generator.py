@@ -1,1 +1,1 @@
-# 自動生成文案模組（略）
+# article_generator.py - placeholder content

@@ -1,0 +1,1 @@
+# longtail_keywords.py - placeholder content
